@@ -1,11 +1,11 @@
 
 @ECHO OFF
 
-:: This program tracks it's execution folder's WAV files and converts them to FLAC
+:: This program tracks its execution folder's WAV files and converts them to FLAC
 :: Requires the FLAC binary to be within the the scripts execution folder.
 
 IF NOT EXIST "flac.exe" (
-  ECHO Please make sure that the flac binary is included in this script's folder.
+  ECHO Please make sure that the flac binary is included in this script's folder or your environment path.
   PAUSE
   GOTO End
   )
@@ -18,7 +18,7 @@ FOR /r %%i IN (*) DO (
   IF "%%~xi%" == ".wav" (
     IF NOT EXIST "%%~ni%.flac" (
       ECHO.
-      ECHO Found uncoverted file %%~ni%. Starting conversion..
+      ECHO Found unconverted file %%~ni%. Starting conversion.
       flac.exe -s "%%i%" > NUL
       ECHO Conversion completed.
       )
